@@ -1,17 +1,32 @@
 from flask import Flask, request, jsonify
 import mysql.connector
+from dotenv import load_dotenv
+import os
+
+# Cargar las variables del archivo .env
+load_dotenv()
 
 app = Flask(__name__)
 
-# Configuración de la base de datos
+# Configuración de la base de datos desde las variables de entorno
 db_config = {
-    "host": "10.9.120.5",
-    "user": "rellenita",
-    "password": "rellenita1234",
-    "database": "Rellenitas",
-    "port": 3306
+    "host": os.getenv("DB_HOST"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "database": os.getenv("DB_NAME"),
+    "port": int(os.getenv("DB_PORT")),
+    "auth_plugin": "mysql_native_password"  # Forzar el plugin de autenticación adecuado
 }
-
+# Intentar la conexión
+try:
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM Clientes")  # Solo para probar la conexión
+    results = cursor.fetchall()
+    cursor.close()
+    conn.close()
+except Exception as e:
+    print("Error en la conexión:", str(e))
 # ---------------------------
 # MENSAJE DE BIENVENIDA
 # ---------------------------
