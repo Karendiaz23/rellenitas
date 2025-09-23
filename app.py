@@ -204,6 +204,45 @@ def get_pedidos():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
+# ---------------------------
+# PRODUCTOS (ADMIN)
+# ---------------------------
+@app.route("/productos", methods=["GET"])
+def get_productos():
+    try:
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM Galletitas")  # o tabla Productos si la creas aparte
+        resultados = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return jsonify(resultados)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/productos", methods=["POST"])
+def add_producto():
+    try:
+        data = request.get_json()
+        nombre = data.get("Relleno")
+        precio = data.get("Precio")
+        imagen_url = data.get("imagen_url", "")  # ruta relativa en /public/images
+
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO Galletitas (Relleno, Precio, imagen_url) VALUES (%s, %s, %s)",
+            (nombre, precio, imagen_url)
+        )
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return jsonify({"message": "Producto agregado correctamente 🚀"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 # ---------------------------
 # RUN APP
 # ---------------------------
