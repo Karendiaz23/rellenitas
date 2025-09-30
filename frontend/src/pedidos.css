@@ -1,0 +1,40 @@
+.pedidos-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.pedidos-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.pedidos-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pedidos-table th, .pedidos-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.pedidos-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pedidos-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.pedidos-table tr:hover {
+  background-color: #e0f7fa;
+  transition: 0.3s;
+}

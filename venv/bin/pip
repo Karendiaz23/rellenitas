@@ -1,4 +1,4 @@
-#!/home/etec/Documentos/rellenitas/venv/bin/python3
+#!/home/etec/rellenitas/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
