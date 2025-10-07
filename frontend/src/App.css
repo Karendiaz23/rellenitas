@@ -1,42 +1,90 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Container general */
+@font-face {
+  font-family: 'Rubik Gemstones';
+  src: url('/fonts/Rubik-Gemstones-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.header-title {
+    font-family: 'Rubik Gemstones', sans-serif; /* Cambié 'Rubik Gemstone' a 'Rubik Gemstones' */
+    font-size: 3rem;
+    color: #d2691e;
+    text-align: center;
+    font-weight: bold;
+}
+
+.home-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #fbbf75; /* Fondo durazno */
+}
+
+/* Header con imagen de fondo */
+.home-header {
+  position: relative;
+  height: 300px;
+  background-image: url("/src/Galletita.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  font-size: 3rem;
+  color: #d2691e;
   text-align: center;
+  font-weight: bold;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Secciones principales */
+.home-main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.section.reverse {
+  flex-direction: row-reverse;
 }
 
-.card {
-  padding: 2em;
+.section-image {
+  width: 300px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.read-the-docs {
-  color: #888;
+.section-text {
+  flex: 1;
+}
+
+.section-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #a0522d;
+}
+
+.section-text p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Footer */
+.home-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f4a261;
+  color: white;
+  font-weight: bold;
 }
