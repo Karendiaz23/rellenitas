@@ -258,7 +258,10 @@ def add_producto():
         return jsonify({"error": str(e)}), 500
 
 
-# ---------------------------
+def create_app():
+    return app
+
+# -----------------------
 # RUN APP
 # ---------------------------
 if __name__ == "__main__":
