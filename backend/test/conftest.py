@@ -3,7 +3,6 @@ import os
 import pytest
 
 # Agrega la carpeta backend al path para que Python pueda encontrar app.py
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app import create_app
 
