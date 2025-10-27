@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-mysql-connector-python = "==9.4.0"
+mysql-connector-python = "*"
 flask = "*"
 pytest = "*"
 pytest-cov = "*"
