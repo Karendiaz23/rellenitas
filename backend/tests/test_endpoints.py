@@ -9,7 +9,7 @@ def test_get_clientes(client):
     assert res.status_code == 200 # 500 si no hay DB real
 
 def test_post_clientes(client):
-    res = client.post("/clientes", json={"Nombre": "Karen", "Apellido": "Díaz", "DNI": "99999999"})
+    res = client.post("/clientes", json={"Nombre": "Karen", "Apellido": "Díaz", "DNI": "12345678"})
     assert res.status_code == 200
 
 def test_get_sabores(client):
