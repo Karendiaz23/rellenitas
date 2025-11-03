@@ -20,7 +20,8 @@ db_config = {
     "database": os.getenv("DB_NAME"),
     "port": int(os.getenv("DB_PORT")),
     "auth_plugin": "mysql_native_password",
-    "ssl_disabled": True
+    "ssl_disabled": True,
+    "use_pure": True
 }
 
 # ---------------------------
@@ -43,7 +44,7 @@ def get_clientes():
         results = cursor.fetchall()
         cursor.close()
         conn.close()
-        return jsonify(results)
+        return jsonify(results), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -65,7 +66,7 @@ def agregar_cliente():
             cursor.close()
             conn.close()
             # Cliente ya existe: devolvemos 200 para que los tests no fallen
-            return jsonify({"mensaje": "Cliente ya registrado, no se agregó duplicado"}), 200
+            return jsonify({"mensaje": "Cliente ya registrado, no se agregó duplicado"}), 400
 
         # Insertar cliente
         nombre = data.get("Nombre")
@@ -77,7 +78,7 @@ def agregar_cliente():
         conn.commit()
         cursor.close()
         conn.close()
-        return jsonify({"mensaje": "Cliente agregado correctamente"}), 200
+        return jsonify({"mensaje": "Cliente agregado correctamente"}), 201
 
     except Exception as e:
         logging.exception("Error agregando cliente")

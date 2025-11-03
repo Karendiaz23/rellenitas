@@ -3,12 +3,15 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[scripts]
+tests = "pytest"
+
 [packages]
 mysql-connector-python = "*"
-flask = "*"
 pytest = "*"
 pytest-cov = "*"
 dotenv = "*"
+flask = "*"
 
 [dev-packages]
 

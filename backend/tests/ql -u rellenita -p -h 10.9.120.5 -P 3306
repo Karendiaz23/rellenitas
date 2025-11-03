@@ -1,0 +1,14 @@
+[0;1;32m●[0m mysql.service - MySQL Community Server
+     Loaded: loaded (]8;;file://213-09/usr/lib/systemd/system/mysql.service/usr/lib/systemd/system/mysql.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Mon 2025-11-03 08:37:31 -03; 42min ago
+    Process: 1021 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)
+   Main PID: 1211 (mysqld)
+     Status: "[0;1;36mServer is operational[0m"
+      Tasks: 37 (limit: 9322)
+     Memory: 422.3M (peak: 435.9M)
+        CPU: 24.674s
+     CGroup: /system.slice/mysql.service
+             └─[0;38;5;245m1211 /usr/sbin/mysqld[0m
+
+nov 03 08:36:48 213-09 systemd[1]: Starting mysql.service - MySQL Community Server...
+nov 03 08:37:31 213-09 systemd[1]: Started mysql.service - MySQL Community Server.
