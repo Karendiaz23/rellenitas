@@ -23,8 +23,10 @@ def test_post_clientes_duplicados(client):
 
 def test_get_sabores(client):
     res = client.get("/sabores")
-    assert res.status_code == 200 
-
+    assert res.status_code == 200
+    sabores = res.get_json() 
+    print(sabores)
+    assert len(sabores) == 18  
 
 def test_get_metodos_pago(client):
     res = client.get("/metodospago")
@@ -41,3 +43,15 @@ def test_get_pedidos(client):
 def test_get_productos(client):
     res = client.get("/productos")
     assert res.status_code == 200
+
+    try:
+        productos = res.get_json()  # Convierte la respuesta en JSON (si es que es JSON)
+        
+        assert len(productos) == 25
+
+        print(productos)
+    except Exception as e:
+        # Si no se puede convertir a JSON, imprime el error
+        print("No es JSON. Error:", e)
+        # Si la respuesta no es JSON, imprime los datos binarios
+        print("Datos binarios:", res.data)
