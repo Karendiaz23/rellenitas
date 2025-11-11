@@ -1,4 +1,4 @@
-/* Container general */
+/* Fuente personalizada */
 @font-face {
   font-family: 'Rubik Gemstones';
   src: url('/fonts/Rubik-Gemstones-Regular.ttf') format('truetype');
@@ -6,24 +6,40 @@
   font-style: normal;
 }
 
-
-.header-title {
-    font-family: 'Rubik Gemstones', sans-serif; /* Cambié 'Rubik Gemstone' a 'Rubik Gemstones' */
-    font-size: 3rem;
-    color: #d2691e;
-    text-align: center;
-    font-weight: bold;
+/* Asegura que todo el fondo sea visible, sin franjas negras y con scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: #fbbf75; /* mismo tono durazno */
+  overflow-x: hidden; /* evita scroll lateral */
+  overflow-y: auto; /* permite desplazarse */
 }
 
+/* Título principal */
+.header-title {
+  font-family: 'Rubik Gemstones', sans-serif;
+  font-size: 3rem;
+  color: #d2691e;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Contenedor principal */
 .home-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   background-color: #fbbf75; /* Fondo durazno */
+  min-height: 100vh; /* que ocupe toda la altura visible */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header con imagen de fondo */
 .home-header {
   position: relative;
+  width: 100%;
   height: 300px;
   background-image: url("/src/Galletita.jpg");
   background-size: cover;
@@ -33,25 +49,21 @@
   justify-content: center;
 }
 
-.header-title {
-  font-size: 3rem;
-  color: #d2691e;
-  text-align: center;
-  font-weight: bold;
-}
-
 /* Secciones principales */
+/* --- MODIFICACIÓN REALIZADA AQUÍ: Se eliminó 'max-width: 1000px;' y se ajustó 'margin' para ocupar todo el ancho --- */
 .home-main {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  margin: 2rem 0; /* 2rem arriba/abajo, 0 a los lados */
+  padding: 0 1rem; /* Mantiene un espacio de seguridad en los bordes de la ventana */
 }
 
+/* Cada bloque de contenido */
 .section {
   display: flex;
   align-items: center;
   gap: 2rem;
   margin-bottom: 4rem;
+  flex-wrap: wrap; /* hace que el contenido se acomode en pantallas pequeñas */
 }
 
 .section.reverse {
@@ -87,4 +99,6 @@
   background-color: #f4a261;
   color: white;
   font-weight: bold;
+  margin-top: auto; /* empuja el footer al final */
+  width: 100%;
 }

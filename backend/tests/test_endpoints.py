@@ -31,14 +31,39 @@ def test_get_sabores(client):
 def test_get_metodos_pago(client):
     res = client.get("/metodospago")
     assert res.status_code == 200
+    assert b'Efectivo' in res.data  # Verifica que el método de pago "Efectivo" esté en la respuesta
+    assert b'Transferencia' in res.data  # Verifica que "Transferencia" esté en la respuesta
+    assert b'Tarjeta' in res.data  # Verifica que "Tarjeta" esté en la respuesta
+
 
 def test_get_pagos(client):
     res = client.get("/pagos")
     assert res.status_code == 200
+    data = res.get_json()
+    assert isinstance(data, list)
+    assert len(data) > 0
+    assert "PagosID" in data[0]
+    assert "Monto" in data[0]
+    assert "Metodo_pagos" in data[0]
+    assert "Galletita" in data[0]
+
 
 def test_get_pedidos(client):
     res = client.get("/pedidos")
     assert res.status_code == 200
+
+    data = res.get_json()
+    assert isinstance(data, list)
+
+    if data:  # Si hay pedidos en la base
+        pedido = data[0]
+        assert "PedidosID" in pedido
+        assert "Fecha" in pedido
+        assert "Cantidad" in pedido
+        assert "Nombre" in pedido
+        assert "Metodo_pagos" in pedido
+        assert "Galletita" in pedido
+
 
 def test_get_productos(client):
     res = client.get("/productos")
